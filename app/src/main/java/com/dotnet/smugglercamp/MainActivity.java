@@ -18,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
         sellButton      = (Button) findViewById(R.id.sellButton);
         productsButton  = (Button) findViewById(R.id.productsButton);
         bossModeButton  = (Button) findViewById(R.id.bossModeButton);
+        
     }
 
     //metody do obsługi kliknięć na buttony
