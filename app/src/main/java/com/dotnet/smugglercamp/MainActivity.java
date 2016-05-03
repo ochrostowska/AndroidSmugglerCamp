@@ -21,6 +21,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     //metody do obsługi kliknięć na buttony
+    //zaa
 
     public void add(View view) {
 
