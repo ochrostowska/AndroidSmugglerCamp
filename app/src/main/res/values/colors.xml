@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
-    <color name="colorAccent">#FF4081</color>
+    <!-- Basic colours we'll use in our app -->
+    <color name="colorPrimary">#1D1D1D</color>
+    <color name="colorPrimaryDark">#030303</color>
+    <color name="colorAccent">#f4f4f4</color>
+    <color name="colorBackground">#4A148C</color>
+    <color name="colorPurple">#6C30B6</color>
 </resources>
