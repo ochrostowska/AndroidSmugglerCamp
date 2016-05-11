@@ -6,4 +6,5 @@
     <color name="colorAccent">#f4f4f4</color>
     <color name="colorBackground">#4A148C</color>
     <color name="colorPurple">#6C30B6</color>
+    <color name="colorPurpleLight">#8757c2</color>
 </resources>
