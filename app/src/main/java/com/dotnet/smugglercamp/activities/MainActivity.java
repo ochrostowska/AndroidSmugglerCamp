@@ -6,12 +6,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 
-import com.dotnet.smugglercamp.AddActivity;
 import com.dotnet.smugglercamp.R;
+import com.dotnet.smugglercamp.database.DatabaseHelper;
 
 public class MainActivity extends AppCompatActivity {
 
     private Button addButton, sellButton, productsButton, bossModeButton;
+    private DatabaseHelper databaseHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,6 +23,9 @@ public class MainActivity extends AppCompatActivity {
         sellButton      = (Button) findViewById(R.id.sellButton);
         productsButton  = (Button) findViewById(R.id.productsButton);
         bossModeButton  = (Button) findViewById(R.id.bossModeButton);
+
+        databaseHelper = DatabaseHelper.getInstance();
+        databaseHelper.downloadData();
 
     }
 
@@ -37,7 +41,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
     public void products(View view) {
-
+        Intent intent = new Intent(this, ProductsActivity.class);
+        startActivity(intent);
     }
     public void bossMode(View view) {
 
