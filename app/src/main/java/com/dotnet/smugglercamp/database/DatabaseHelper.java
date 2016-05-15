@@ -23,7 +23,6 @@ public class DatabaseHelper {
         if(ourInstance==null) ourInstance = new DatabaseHelper();
         return ourInstance;
     }
-
     // Konstruktor klasy
     public DatabaseHelper() {
     }
