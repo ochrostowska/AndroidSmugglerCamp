@@ -6,6 +6,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.dotnet.smugglercamp.database.DatabaseHelper;
+
 public class AddActivity extends AppCompatActivity {
 
     private TextInputEditText editTextId, editTextCodename, editTextName, editTextQuantity;
@@ -22,8 +24,32 @@ public class AddActivity extends AppCompatActivity {
         editTextQuantity    = (TextInputEditText) findViewById(R.id.input_quantity);
     }
 
+    private void insertItem() {
+        // pobranie z pól tekstowych odpowiednich zmiennych
+        int    id           = Integer.parseInt(editTextId.getText().toString());
+        String codename     = editTextCodename.getText().toString();
+        String name         = editTextName.getText().toString();
+        int    quantity     = Integer.parseInt(editTextQuantity.getText().toString());
+        // Uzyskanie dostępu do instancji klasy DatabaseHelper
+        DatabaseHelper databaseHelper = DatabaseHelper.getInstance();
+        // Wywołanie metody dodającej elementy do bazy
+        databaseHelper.sendData(id, codename, name, quantity);
+        // zakończenie AddActivity -> powrót do widoku MainActivity
+        finish();
+    }
+
     public void addItem(View view) {
-        // metoda do obsługi kliknięć na addButton
-        Toast.makeText(this, "Hello!", Toast.LENGTH_SHORT).show();
+        // Sprawdzenie czy zostały niewypełnione pola
+        if (checkIfEmpty(editTextId) || checkIfEmpty(editTextCodename) || checkIfEmpty(editTextName) || checkIfEmpty(editTextQuantity)) {
+            Toast.makeText(AddActivity.this, "Fill all the fields", Toast.LENGTH_LONG).show();
+        } else {
+            // jeśli wszystkie pola są wypełnione -> wywołujemy metodę insertItem
+            insertItem();
+        }
+    }
+
+    // Funkcja zwracająca TRUE jeśli długość Stringa pobranego z pola tekstowego nie jest większa od zera
+    private boolean checkIfEmpty(TextInputEditText editText) {
+        return editText.getText().toString().trim().length() <= 0;
     }
 }
