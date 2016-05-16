@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
     private Button addButton, sellButton, productsButton, bossModeButton;
     private DatabaseHelper databaseHelper;
 
+    
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
