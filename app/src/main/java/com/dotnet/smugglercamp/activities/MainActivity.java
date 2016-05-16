@@ -70,7 +70,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void sell(View view) {
-
+        Intent intent = new Intent(MainActivity.this, SellActivity.class);
+        startActivity(intent);
     }
 
     public void products(View view) {

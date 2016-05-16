@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools=" http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="@dimen/activity_horizontal_margin"
+    android:background="@color/colorBackground"
+    android:orientation="vertical"
+    tools:ignore="MissingPrefix">
+
+    <ScrollView
+        android:layout_width="fill_parent"
+        android:layout_height="match_parent"
+        android:layout_gravity="center"
+        android:fitsSystemWindows="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_gravity="center_vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/text_view_margin"
+            android:textSize="@dimen/text_32"
+            android:layout_gravity="center"
+            android:textColor="@color/colorAccent"
+            android:text="Sell item"
+            android:textAllCaps="false" />
+
+    <TextView
+        android:id="@+id/tt2"
+        android:text="Name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <AutoCompleteTextView
+        android:id="@+id/nameAutoCompleteTV"
+        android:layout_width="match_parent"
+        android:textSize="@dimen/text_24"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="@dimen/margin_10"/>
+
+    <TextView
+        android:id="@+id/tt3"
+        android:text="Codename"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/textView_codename"
+        android:padding="@dimen/margin_10"
+        android:textSize="@dimen/text_20"
+        android:textColor="@color/colorPurpleLight"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:id="@+id/tt4"
+        android:text="Id"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:id="@+id/textView_id"
+        android:text=" "
+        android:paddingTop="@dimen/margin_10"
+        android:paddingLeft="@dimen/margin_10"
+        android:paddingRight="@dimen/margin_10"
+        android:textColor="@color/colorPurpleLight"
+        android:textSize="@dimen/text_20"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <android.support.design.widget.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:theme="@style/EditTextStyle">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/textinput_quantity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/text_view_margin"
+            android:hint="Quantity"
+            android:textSize="@dimen/text_20"
+            android:padding="@dimen/margin_10"
+            android:imeOptions="flagNoExtractUi"
+            android:inputType="number" />
+
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/buttonSell"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:onClick="sellItem"
+        android:text="Sell"
+        android:textSize="@dimen/text_20"
+        android:textAllCaps="false"
+        android:layout_marginTop="@dimen/margin_20"
+        android:background="@color/colorPurple"
+        />
+
+        </LinearLayout>
+        </ScrollView>
+    </LinearLayout>

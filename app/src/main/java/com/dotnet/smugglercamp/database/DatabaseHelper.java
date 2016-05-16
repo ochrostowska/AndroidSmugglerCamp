@@ -23,7 +23,7 @@ public class DatabaseHelper {
     private static List<Item> items;
 
     private static DatabaseHelper ourInstance;
-    
+
     public static DatabaseHelper getInstance() {
         // Jeśli instancja nie istnieje -> tworzymy nową
         if(ourInstance==null) ourInstance = new DatabaseHelper();
@@ -82,6 +82,14 @@ public class DatabaseHelper {
 
     public List<Item> getItems() {
         return items;
+    }
+
+    public String[] getNames() {
+        final String[] names = new String[items.size()];
+        for (int i = 0; i < items.size(); i++) {
+            names[i] = items.get(i).getName();
+        }
+        return names;
     }
 
     public String[] getIds() {
