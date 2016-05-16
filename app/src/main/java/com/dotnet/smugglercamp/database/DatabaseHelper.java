@@ -40,7 +40,6 @@ public class DatabaseHelper {
                 .baseUrl(BASE_URL)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
-
         api = retrofit.create(ItemsAPI.class);
     }
 
