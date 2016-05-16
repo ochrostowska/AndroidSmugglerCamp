@@ -2,6 +2,10 @@ package com.dotnet.smugglercamp.database;
 
 import android.util.Log;
 
+import com.dotnet.smugglercamp.Item;
+
+import java.util.List;
+
 import okhttp3.ResponseBody;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -14,6 +18,7 @@ public class DatabaseHelper {
     private static final String BASE_URL = "http://smugglercamp.azurewebsites.net/";
     public static final String TAG = DatabaseHelper.class.getSimpleName();
     private ItemsAPI api;
+    private static List<Item> items;
 
     private static DatabaseHelper ourInstance;
 
@@ -58,6 +63,26 @@ public class DatabaseHelper {
                 Log.d(TAG, "ERROR !!! " + t.getMessage());
             }
         });
+    }
+
+    public void downloadData() {
+        initializeRetrofit();
+        Call<List<Item>> call = api.getItems();
+        call.enqueue(new Callback<List<Item>>() {
+            @Override
+            public void onResponse(Call<List<Item>> call, Response<List<Item>> response) {
+                items = response.body();
+            }
+
+            @Override
+            public void onFailure(Call<List<Item>> call, Throwable t) {
+                Log.d(TAG, t.getMessage());
+            }
+        });
+    }
+
+    public List<Item> getItems() {
+        return items;
     }
 }
 

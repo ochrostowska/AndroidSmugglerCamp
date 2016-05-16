@@ -1,4 +1,4 @@
-package com.dotnet.smugglercamp;
+package com.dotnet.smugglercamp.activities;
 
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Toast;
 
+import com.dotnet.smugglercamp.R;
 import com.dotnet.smugglercamp.database.DatabaseHelper;
 
 public class AddActivity extends AppCompatActivity {

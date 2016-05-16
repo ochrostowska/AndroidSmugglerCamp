@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/single_row"
+    >
+
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:id="@+id/lay"
+    android:padding="@dimen/margin_20">
+
+    <ImageView
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:src="@drawable/money"
+        android:background="@android:color/transparent"
+        android:layout_gravity="center_vertical"/>
+    <TextView
+        android:id="@+id/nameInRow"
+        android:layout_width="0dp"
+        android:textSize="@dimen/text_20"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="Whaaaaat"
+        android:paddingLeft="@dimen/margin_20"
+        android:paddingRight="@dimen/margin_20"/>
+    <TextView
+        android:id="@+id/quantityInRow"
+        android:textSize="@dimen/text_20"
+        android:paddingLeft="10dp"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:text="Quantity" />
+</LinearLayout>
+    <TextView
+        android:layout_below="@+id/lay"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/colorPurpleLight"/>
+</RelativeLayout>
