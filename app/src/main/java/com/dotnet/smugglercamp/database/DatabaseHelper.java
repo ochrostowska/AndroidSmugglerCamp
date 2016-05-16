@@ -23,8 +23,7 @@ public class DatabaseHelper {
     private static List<Item> items;
 
     private static DatabaseHelper ourInstance;
-
-    // Metoda zwracająca instancję klasy DatabaseHelper
+    
     public static DatabaseHelper getInstance() {
         // Jeśli instancja nie istnieje -> tworzymy nową
         if(ourInstance==null) ourInstance = new DatabaseHelper();
