@@ -1,5 +1,6 @@
 package com.dotnet.smugglercamp.activities;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.TextInputEditText;
 import android.support.v7.app.AppCompatActivity;
@@ -18,11 +19,21 @@ public class AddActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_layout);
 
-        // podpinanie widoków
-        editTextId          = (TextInputEditText) findViewById(R.id.input_id);
-        editTextCodename    = (TextInputEditText) findViewById(R.id.input_codename);
-        editTextName        = (TextInputEditText) findViewById(R.id.input_name);
-        editTextQuantity    = (TextInputEditText) findViewById(R.id.input_quantity);
+        Intent intent  = getIntent();
+        String name     = intent.getStringExtra("name");
+        String codename = intent.getStringExtra("codename");
+        String id       = intent.getStringExtra("id");
+        String quantity = intent.getStringExtra("quantity");
+
+        editTextId       = (TextInputEditText) findViewById(R.id.input_id);
+        editTextCodename = (TextInputEditText) findViewById(R.id.input_codename);
+        editTextName     = (TextInputEditText) findViewById(R.id.input_name);
+        editTextQuantity = (TextInputEditText) findViewById(R.id.input_quantity);
+
+        editTextCodename.setText(codename);
+        editTextName.setText(name);
+        editTextId.setText(id);
+        editTextQuantity.setText(quantity);
     }
 
     private void insertItem() {

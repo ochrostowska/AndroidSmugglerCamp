@@ -84,6 +84,30 @@ public class DatabaseHelper {
     public List<Item> getItems() {
         return items;
     }
+
+    public String[] getIds() {
+        final String[] ids = new String[items.size()];
+        for (int i = 0; i < items.size(); i++) {
+            ids[i] = String.valueOf(items.get(i).getItem_id());
+        }
+        return ids;
+    }
+
+    public String getName(int id) {
+        return items.get(id).getName();
+    }
+
+    public String getCodeName(int id) {
+        return items.get(id).getCodename();
+    }
+
+    public int getQuantity(int id) {
+        return items.get(id).getQuantity();
+    }
+
+    public int getItemId(int id) {
+        return items.get(id).getItem_id();
+    }
 }
 
 /* OBJAŚNIENIA DO METOD
