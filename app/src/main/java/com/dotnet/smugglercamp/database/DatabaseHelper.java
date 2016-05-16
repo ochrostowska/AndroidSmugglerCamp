@@ -4,6 +4,8 @@ import android.util.Log;
 
 import com.dotnet.smugglercamp.Item;
 
+import org.greenrobot.eventbus.EventBus;
+
 import java.util.List;
 
 import okhttp3.ResponseBody;
@@ -57,7 +59,6 @@ public class DatabaseHelper {
                     e.printStackTrace();
                 }
             }
-
             @Override
             public void onFailure(Call<ResponseBody> call, Throwable t) {
                 Log.d(TAG, "ERROR !!! " + t.getMessage());
@@ -72,8 +73,8 @@ public class DatabaseHelper {
             @Override
             public void onResponse(Call<List<Item>> call, Response<List<Item>> response) {
                 items = response.body();
+                EventBus.getDefault().post(new ItemsDownloadedEvent("Downloading Successful!"));
             }
-
             @Override
             public void onFailure(Call<List<Item>> call, Throwable t) {
                 Log.d(TAG, t.getMessage());

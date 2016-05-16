@@ -1,8 +1,7 @@
 package com.dotnet.smugglercamp.activities;
 
-import android.content.SharedPreferences;
+import android.content.Intent;
 import android.os.Bundle;
-import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -21,10 +20,15 @@ public class ProductsActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.products_layout);
 
-        DatabaseHelper databaseHelper = DatabaseHelper.getInstance();
-        List<Item> items = databaseHelper.getItems();
-
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        Intent intent = getIntent();
+        List<Item> items;
+        try {
+            items = (List<Item>) intent.getSerializableExtra("items");
+        } catch (Exception e) {
+            // Alternatywna wersja pobierania listy itemów (poprzednia)
+            DatabaseHelper databaseHelper = DatabaseHelper.getInstance();
+            items = databaseHelper.getItems();
+        }
 
         RecyclerView productsRecyclerView = (RecyclerView) findViewById(R.id.smugglerRecyclerView);
         productsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
