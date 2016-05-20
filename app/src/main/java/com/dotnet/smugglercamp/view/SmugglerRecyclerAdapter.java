@@ -27,7 +27,7 @@ public class SmugglerRecyclerAdapter extends RecyclerView.Adapter<ItemHolder> {
     @Override
     public void onBindViewHolder(ItemHolder holder, int position) {
         Item item = itemList.get(position);
-        holder.name.setText(item.getName());
+        holder.name.setText(item.getCodename());
         holder.quantity.setText(String.valueOf(item.getQuantity()));
     }
 

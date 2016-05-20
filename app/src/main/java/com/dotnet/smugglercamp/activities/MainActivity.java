@@ -1,5 +1,6 @@
 package com.dotnet.smugglercamp.activities;
 
+import android.content.ActivityNotFoundException;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
@@ -44,28 +45,35 @@ public class MainActivity extends AppCompatActivity {
         eventBus = EventBus.getDefault();
         eventBus.register(this);
         databaseHelper = DatabaseHelper.getInstance();
+        enableButtons(false);
     }
 
 
     @Subscribe
-    public void onEvent(ItemsDownloadedEvent event) {
+    public void react(ItemsDownloadedEvent event) {
         downloadedItems = databaseHelper.getItems();
         enableButtons(true);
         Toast.makeText(this, "Event says : " + event.getMessage(), Toast.LENGTH_LONG).show();
     }
 
     public void add(View view) {
+
         try {
             Intent intent = new Intent("com.google.zxing.client.android.SCAN");
             intent.putExtra("SCAN_MODE", "QR_CODE_MODE");
 
             startActivityForResult(intent, 0);
 
-        } catch (Exception e) {
+        } catch (ActivityNotFoundException e) {
+            try {
+                Uri marketUri = Uri.parse("market://details?id=com.google.zxing.client.android.SCAN");
+                Intent marketIntent = new Intent(Intent.ACTION_VIEW, marketUri);
+                startActivity(marketIntent);
 
-            Uri marketUri = Uri.parse("market://details?id=com.google.zxing.client.android");
-            Intent marketIntent = new Intent(Intent.ACTION_VIEW,marketUri);
-            startActivity(marketIntent);
+            } catch (Exception ex) {
+                Intent intent = new Intent(this, AddActivity.class);
+                startActivity(intent);
+            }
         }
     }
 
@@ -97,17 +105,17 @@ public class MainActivity extends AppCompatActivity {
                 boolean conQuantity = jsonJavaRootObject.containsKey("quantity");
                 if (conId && conQuantity) {
                     try {
-                        String id = (String) jsonJavaRootObject.get("item_id");
+                        String id       = (String) jsonJavaRootObject.get("item_id");
                         String quantity = (String) jsonJavaRootObject.get("quantity");
+
                         String[] ids = databaseHelper.getIds();
                         int index = Arrays.asList(ids).indexOf(id);
-
                         if (index == -1) {
                             startAddActivity(id, quantity);
                         } else {
                             String name = databaseHelper.getName(index);
                             String codename = databaseHelper.getCodeName(index);
-                            startAddActivity(id,quantity,name,codename);
+                            startAddActivity(id, quantity, name, codename);
                         }
                     } catch (Exception e) {
                         Log.d("Exception", "Exception " + e.getMessage());
@@ -118,7 +126,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void startAddActivity(String... data) {
-        if(data.length>=2 && data.length<=4) {
+        if (data.length >= 2 && data.length <= 4) {
             Intent intent = new Intent(this, AddActivity.class);
             intent.putExtra("id", data[0]);
             intent.putExtra("quantity", data[1]);
