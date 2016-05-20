@@ -1,7 +1,9 @@
 package com.dotnet.smugglercamp.activities;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
@@ -30,9 +32,12 @@ public class ProductsActivity extends AppCompatActivity {
             items = databaseHelper.getItems();
         }
 
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        boolean inBossMode = sharedPreferences.getBoolean("bossMode", false);
+
         RecyclerView productsRecyclerView = (RecyclerView) findViewById(R.id.smugglerRecyclerView);
         productsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        SmugglerRecyclerAdapter recyclerAdapter = new SmugglerRecyclerAdapter(items);
+        SmugglerRecyclerAdapter recyclerAdapter = new SmugglerRecyclerAdapter(items, inBossMode);
         productsRecyclerView.setAdapter(recyclerAdapter);
     }
 }

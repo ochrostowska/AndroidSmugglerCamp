@@ -25,7 +25,7 @@
         android:text="Add"
         android:textSize="24sp"
         android:textColor="@color/colorAccent"
-        android:background="@color/colorPurple"
+        android:background="@drawable/background_selector"
         android:gravity="center"
         android:layout_marginBottom="10dp"/>
     <Button
@@ -36,7 +36,7 @@
         android:text="Sell"
         android:textSize="24sp"
         android:textColor="@color/colorAccent"
-        android:background="@color/colorPurple"
+        android:background="@drawable/background_selector"
         android:gravity="center"
         android:layout_marginBottom="10dp"/>
     <Button
@@ -47,7 +47,7 @@
         android:text="Products"
         android:textSize="24sp"
         android:textColor="@color/colorAccent"
-        android:background="@color/colorPurple"
+        android:background="@drawable/background_selector"
         android:gravity="center"
         android:layout_marginBottom="10dp"/>
     <Button
@@ -58,7 +58,7 @@
         android:text="Boss mode"
         android:textSize="24sp"
         android:textColor="@color/colorAccent"
-        android:background="@color/colorPurple"
+        android:background="@drawable/background_selector"
         android:gravity="center"
         android:layout_marginBottom="10dp"/>
 

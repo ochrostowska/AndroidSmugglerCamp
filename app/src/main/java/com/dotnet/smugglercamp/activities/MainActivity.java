@@ -2,8 +2,10 @@ package com.dotnet.smugglercamp.activities;
 
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
@@ -89,7 +91,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void bossMode(View view) {
-
+        Intent intent = new Intent(MainActivity.this, BossModeActivity.class);
+        startActivity(intent);
     }
 
     @Override
@@ -139,8 +142,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void enableButtons(boolean enable) {
-        addButton.setEnabled(enable);
-        sellButton.setEnabled(enable);
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        boolean bossMode = sharedPreferences.getBoolean("bossMode", false);
+
+        if(!bossMode) {
+            addButton.setEnabled(bossMode);
+            sellButton.setEnabled(bossMode);
+        } else {
+            addButton.setEnabled(enable);
+            sellButton.setEnabled(enable);
+        }
         productsButton.setEnabled(enable);
         bossModeButton.setEnabled(enable);
     }

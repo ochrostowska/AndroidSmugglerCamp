@@ -13,8 +13,10 @@ import java.util.List;
 public class SmugglerRecyclerAdapter extends RecyclerView.Adapter<ItemHolder> {
 
     private List<Item> itemList;
+    private boolean isBossMode;
 
-    public SmugglerRecyclerAdapter(List<Item> itemList) {
+    public SmugglerRecyclerAdapter(List<Item> itemList, boolean isBossMode) {
+        this.isBossMode = isBossMode;
         this.itemList = itemList;
     }
 
@@ -27,7 +29,10 @@ public class SmugglerRecyclerAdapter extends RecyclerView.Adapter<ItemHolder> {
     @Override
     public void onBindViewHolder(ItemHolder holder, int position) {
         Item item = itemList.get(position);
-        holder.name.setText(item.getCodename());
+
+        if (isBossMode) holder.name.setText(item.getName());
+        else holder.name.setText(item.getCodename());
+
         holder.quantity.setText(String.valueOf(item.getQuantity()));
     }
 

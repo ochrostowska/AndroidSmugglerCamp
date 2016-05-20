@@ -19,6 +19,7 @@
         <activity android:name=".activities.AddActivity" />
         <activity android:name=".activities.ProductsActivity" />
         <activity android:name=".activities.SellActivity" />
+        <activity android:name=".activities.BossModeActivity"/>
     </application>
 
 </manifest>

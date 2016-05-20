@@ -19,15 +19,15 @@ public class AddActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.add_layout);
 
-        Intent intent  = getIntent();
-        String name     = intent.getStringExtra("name");
+        Intent intent = getIntent();
+        String name = intent.getStringExtra("name");
         String codename = intent.getStringExtra("codename");
-        String id       = intent.getStringExtra("id");
+        String id = intent.getStringExtra("id");
         String quantity = intent.getStringExtra("quantity");
 
-        editTextId       = (TextInputEditText) findViewById(R.id.input_id);
+        editTextId = (TextInputEditText) findViewById(R.id.input_id);
         editTextCodename = (TextInputEditText) findViewById(R.id.input_codename);
-        editTextName     = (TextInputEditText) findViewById(R.id.input_name);
+        editTextName = (TextInputEditText) findViewById(R.id.input_name);
         editTextQuantity = (TextInputEditText) findViewById(R.id.input_quantity);
 
         editTextCodename.setText(codename);
@@ -38,10 +38,10 @@ public class AddActivity extends AppCompatActivity {
 
     private void insertItem() {
         // pobranie z pól tekstowych odpowiednich zmiennych
-        int    id           = Integer.parseInt(editTextId.getText().toString());
-        String codename     = editTextCodename.getText().toString();
-        String name         = editTextName.getText().toString();
-        int    quantity     = Integer.parseInt(editTextQuantity.getText().toString());
+        int id = Integer.parseInt(editTextId.getText().toString());
+        String codename = editTextCodename.getText().toString();
+        String name = editTextName.getText().toString();
+        int quantity = Integer.parseInt(editTextQuantity.getText().toString());
         // Uzyskanie dostępu do instancji klasy DatabaseHelper
         DatabaseHelper databaseHelper = DatabaseHelper.getInstance();
         // Wywołanie metody dodającej elementy do bazy
