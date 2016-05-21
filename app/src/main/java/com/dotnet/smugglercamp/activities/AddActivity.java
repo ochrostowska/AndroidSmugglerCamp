@@ -22,8 +22,8 @@ public class AddActivity extends AppCompatActivity {
         Intent intent = getIntent();
         String name = intent.getStringExtra("name");
         String codename = intent.getStringExtra("codename");
-        String id = intent.getStringExtra("id");
-        String quantity = intent.getStringExtra("quantity");
+        int id = intent.getIntExtra("id", 0);
+        int quantity = intent.getIntExtra("quantity", 0);
 
         editTextId = (TextInputEditText) findViewById(R.id.input_id);
         editTextCodename = (TextInputEditText) findViewById(R.id.input_codename);
@@ -32,8 +32,8 @@ public class AddActivity extends AppCompatActivity {
 
         editTextCodename.setText(codename);
         editTextName.setText(name);
-        editTextId.setText(id);
-        editTextQuantity.setText(quantity);
+        editTextId.setText(""+id);
+        editTextQuantity.setText(""+quantity);
     }
 
     private void insertItem() {

@@ -92,12 +92,11 @@ public class DatabaseHelper {
         return names;
     }
 
-    public String[] getIds() {
-        final String[] ids = new String[items.size()];
+    public int[] getIds() {
+        final int[] ids = new int[items.size()];
         for (int i = 0; i < items.size(); i++) {
-            ids[i] = String.valueOf(items.get(i).getItem_id());
+            ids[i] = items.get(i).getItem_id();
         }
-        
         return ids;
     }
 

@@ -108,13 +108,13 @@ public class MainActivity extends AppCompatActivity {
                 boolean conQuantity = jsonJavaRootObject.containsKey("quantity");
                 if (conId && conQuantity) {
                     try {
-                        String id       = (String) jsonJavaRootObject.get("item_id");
-                        String quantity = (String) jsonJavaRootObject.get("quantity");
+                        int id       = Integer.parseInt((String) jsonJavaRootObject.get("item_id"));
+                        int quantity = Integer.parseInt((String) jsonJavaRootObject.get("quantity"));
 
-                        String[] ids = databaseHelper.getIds();
+                        int[] ids = databaseHelper.getIds();
                         int index = Arrays.asList(ids).indexOf(id);
                         if (index == -1) {
-                            startAddActivity(id, quantity);
+                            startAddActivity(id, quantity, null, null);
                         } else {
                             String name = databaseHelper.getName(index);
                             String codename = databaseHelper.getCodeName(index);
@@ -126,6 +126,18 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    // do intow
+    private void startAddActivity(int id, int quantity, String name, String codename) {
+        Intent intent = new Intent(this, AddActivity.class);
+        intent.putExtra("id", id);
+        intent.putExtra("quantity", quantity);
+        if (name != null && codename != null) {
+            intent.putExtra("name", name);
+            intent.putExtra("codename", codename);
+        }
+        startActivity(intent);
     }
 
     private void startAddActivity(String... data) {
