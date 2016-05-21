@@ -97,6 +97,7 @@ public class DatabaseHelper {
         for (int i = 0; i < items.size(); i++) {
             ids[i] = String.valueOf(items.get(i).getItem_id());
         }
+        
         return ids;
     }
 
